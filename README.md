@@ -1,5 +1,13 @@
-# OpenVPN on EC2
-A simple terraform to create EC2 for OpenVPN server.
+# I just want a quick OpenVPN
+Get openvpn access using a single command, auto config ec2 instance and download the config file.
+
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
+
+### TL;DR
+```sh
+# put your ec2 key pair (.pem) in the project root
+terraform init && terraform plan -o plan.out && terraform apply plan.out
+```
 
 ### Prerequisites
 - Terraform
@@ -8,13 +16,13 @@ A simple terraform to create EC2 for OpenVPN server.
 
 ### How to use
 1. Configure variables for custom use
-    | Variable      | Description | Default | 
-    | ----------- | ----------- | ----------- |
-    | app_name | application name | openvpn-on-ec2 |
-    | region | AWS region to deploy the resources, `make sure you also change the provider region in terraform.tf` | eu-west-1 |
-    | instance_type | EC2 instance type | t2.micro |
-    | ec2_key_name | EC2 key pair name | user1 |
-    | ec2_ami_id | EC2 AMI ID | / |
+    | Variable      | Description | Default | Required |
+    | ----------- | ----------- | ----------- | ----------- |
+    | app_name | application name | openvpn-on-ec2 | no |
+    | region | AWS region to deploy the resources | us-west-1 | no |
+    | instance_type | EC2 instance type | t4g.small | no |
+    | ec2_key_name | EC2 key pair name | - | yes |
+    | ec2_ami_id | Map of AMI IDs for each region | see `variable.tf` | no |
 
     The variable can be configured in the `tfvars` files
 
@@ -22,6 +30,7 @@ A simple terraform to create EC2 for OpenVPN server.
     ```sh
     terraform init
     ```
+1. Put your ec2 key pair (.pem) in the project root, otherwise the vpn config can't be downloaded
 
 1. Deploy resources
     ```sh
@@ -38,9 +47,7 @@ A simple terraform to create EC2 for OpenVPN server.
 - Security Group
 - EC2
 
-### How to download openvpn config from ec2 instance
-1. SSH to the EC2 instance
-    ```sh
-    scp -i <keypair> ec2-user@<ec2-public-ip>:~/client.ovpn .
-    ```
-
+### Clean up
+```sh
+terraform destroy
+```
