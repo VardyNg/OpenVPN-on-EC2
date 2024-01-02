@@ -10,12 +10,11 @@ variable "region" {
 
 variable "instance_type" {
   type    = string
-  default = "t2.micro"
+  default = "t4g.small"
 }
 
 variable "ec2_key_name" {
   type    = string
-  default = "user1"
 }
 
 variable "ec2_ami_id" {
