@@ -1,5 +1,5 @@
 # I just want a quick OpenVPN
-Get openvpn access using a single command, auto config ec2 instance and download the config file.
+Deploy VPN servers on any AWS region, get openvpn access using a single command, auto config ec2 instance and download the config file. 
 
 ![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
 
@@ -8,6 +8,7 @@ Get openvpn access using a single command, auto config ec2 instance and download
 # put your ec2 key pair (.pem) in the project root
 terraform init && terraform plan -o plan.out && terraform apply plan.out
 ```
+Wait for the execution to finish, the `client.ovpn` will be downloaded to the project root soon.
 
 ### Prerequisites
 - Terraform
