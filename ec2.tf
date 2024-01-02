@@ -14,7 +14,7 @@ module "ec2_instance" {
   monitoring                  = true
   vpc_security_group_ids      = [module.vpn-service-security-group.security_group_id]
   subnet_id                   = module.vpc.public_subnets[0]
-  ami                         = var.ec2_ami_id
+  ami                         = var.ec2_ami_id[var.region]
   user_data                   = local.user_data_content
   associate_public_ip_address = true
 }
