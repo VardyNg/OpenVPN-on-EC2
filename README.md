@@ -7,7 +7,7 @@ Deploy VPN servers on any AWS region, get openvpn access using a single command,
 ### TL;DR
 ```sh
 # put your ec2 key pair (.pem) in the project root
-terraform init && terraform plan -o plan.out && terraform apply plan.out
+terraform init && terraform apply --auto-approve
 ```
 Wait for the execution to finish, the `client.ovpn` will be downloaded to the project root soon.
 
