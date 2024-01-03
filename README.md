@@ -3,6 +3,7 @@ Deploy VPN servers on any AWS region, get openvpn access using a single command,
 
 ![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
 
+![DEMO](./docs/demo.gif)
 ### TL;DR
 ```sh
 # put your ec2 key pair (.pem) in the project root
